@@ -1,0 +1,23 @@
+syntax = "proto1";
+
+option java_multiple_files = true;
+option java_package = "com.myapp.grpc";
+option java_outer_classname = "NotificationProto";
+
+message NotificationRequest {
+  string type = 1;
+  string action = 2;
+  int32 temperature = 3;
+  string body = 4;
+}
+
+message NotificationResponse {
+  bool success = 1;
+  string message = 2;
+}
+
+
+service NotificationService {
+  rpc SendNotification (NotificationRequest) returns (NotificationResponse);
+}
+
